@@ -1,0 +1,29 @@
+{
+  "name": "solvia",
+  "version": "0.1.0",
+  "description": "Solvia monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/exporter-metrics-otlp-http": "^0.220.0",
+    "@opentelemetry/exporter-prometheus": "^0.220.0",
+    "@opentelemetry/sdk-metrics": "^2.9.0",
+    "@sentry/node": "^10.64.0",
+    "@sentry/profiling-node": "^10.64.0"
+  }
+}

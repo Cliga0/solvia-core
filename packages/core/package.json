@@ -1,0 +1,48 @@
+{
+  "name": "@solvia/core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Solvia core package",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    
+    "test": "jest",
+    "test:application": "jest src/application",
+    "test:instrumentation": "jest src/instrumentation",
+    "test:contributions": "jest src/kernel/contributions",
+    "test:resolver": "jest src/kernel/contributions/resolver",
+    "test:registry": "jest src/kernel/contributions/registry",
+    "test:lifecycle": "jest src/kernel/contributions/lifecycle",
+    "test:loader": "jest src/kernel/contributions/loader",
+    "test:validator": "jest src/kernel/contributions/validator",
+    "test:normalization": "jest src/kernel/contributions/normalization",
+    "test:bootstrap": "jest src/kernel/bootstrap",
+    "test:pipeline": "jest src/kernel/bootstrap/pipeline",
+    "test:integration": "jest src/__tests__/integration",
+    "test:e2e": "jest src/__tests__/e2e",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.0",
+    "@nestjs/core": "^11.0.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.0.0",
+    "jest": "^30.4.2",
+    "ts-jest": "^29.4.11"
+  }
+}
