@@ -1,4 +1,4 @@
-import { ConfigVariablesMaskingStrategies } from 'src/engine/core-modules/twenty-config/enums/config-variables-masking-strategies.enum';
+import { ConfigVariablesMaskingStrategies } from '../enums/config-variables-masking-strategies.enum';
 
 export const configVariableMaskSensitiveData = (
   value: string,

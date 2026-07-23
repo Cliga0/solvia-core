@@ -15,54 +15,47 @@ import {
   type ValidationError,
   validateSync,
 } from 'class-validator';
-import {
-  ENTERPRISE_INSTANCE_TYPE,
-  type EnterpriseInstanceType,
-} from 'twenty-shared/constants';
-import { isDefined } from 'twenty-shared/utils';
 import { type LoggerOptions } from 'typeorm/logger/LoggerOptions';
 
-import { LogicFunctionDriverType } from 'src/engine/core-modules/logic-function/logic-function-drivers/interfaces/logic-function-driver.interface';
-import { type AwsRegion } from 'src/engine/core-modules/twenty-config/interfaces/aws-region.interface';
-import { NodeEnvironment } from 'src/engine/core-modules/twenty-config/interfaces/node-environment.interface';
-import { SupportDriver } from 'src/engine/core-modules/twenty-config/interfaces/support.interface';
-
-import { CaptchaDriverType } from 'src/engine/core-modules/captcha/interfaces';
-import { CodeInterpreterDriverType } from 'src/engine/core-modules/code-interpreter/code-interpreter.interface';
-import { DpaRegion } from 'src/engine/core-modules/dpa/enums/dpa-region.enum';
-import { EmailDriver } from 'src/engine/core-modules/email/enums/email-driver.enum';
-import { EmailingDomainDriver } from 'src/engine/core-modules/emailing-domain/drivers/types/emailing-domain-driver.type';
-import { ExceptionHandlerDriver } from 'src/engine/core-modules/exception-handler/interfaces';
-import { StorageDriverType } from 'src/engine/core-modules/file-storage/interfaces';
-import {
-  LoggerDriverType,
-  type TwentyLogLevel,
-} from 'src/engine/core-modules/logger/interfaces';
-import { type MeterDriver } from 'src/engine/core-modules/metrics/types/meter-driver.type';
-import { CastToLogLevelArray } from 'src/engine/core-modules/twenty-config/decorators/cast-to-log-level-array.decorator';
-import { CastToMeterDriverArray } from 'src/engine/core-modules/twenty-config/decorators/cast-to-meter-driver.decorator';
-import { CastToPositiveNumber } from 'src/engine/core-modules/twenty-config/decorators/cast-to-positive-number.decorator';
-import { CastToTypeORMLogLevelArray } from 'src/engine/core-modules/twenty-config/decorators/cast-to-typeorm-log-level-array.decorator';
-import { CastToUpperSnakeCase } from 'src/engine/core-modules/twenty-config/decorators/cast-to-upper-snake-case.decorator';
-import { ConfigVariablesMetadata } from 'src/engine/core-modules/twenty-config/decorators/config-variables-metadata.decorator';
-import { IsAWSRegion } from 'src/engine/core-modules/twenty-config/decorators/is-aws-region.decorator';
-import { IsDuration } from 'src/engine/core-modules/twenty-config/decorators/is-duration.decorator';
-import { IsOptionalOrEmptyString } from 'src/engine/core-modules/twenty-config/decorators/is-optional-or-empty-string.decorator';
-import { IsStrictlyLowerThan } from 'src/engine/core-modules/twenty-config/decorators/is-strictly-lower-than.decorator';
-import { IsTwentySemVer } from 'src/engine/core-modules/twenty-config/decorators/is-twenty-semver.decorator';
-import { ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
-import { ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
+import { EnterpriseInstanceType, ENTERPRISE_INSTANCE_TYPE } from './placeholders/twenty-shared-constants';
+import { isDefined } from './placeholders/twenty-shared-utils';
+import { LogicFunctionDriverType } from './placeholders/logic-function-driver-type';
+import { type AwsRegion } from './interfaces/aws-region.interface';
+import { NodeEnvironment } from './interfaces/node-environment.interface';
+import { SupportDriver } from './interfaces/support.interface';
+import { CaptchaDriverType } from './placeholders/captcha-driver-type';
+import { CodeInterpreterDriverType } from './placeholders/code-interpreter-driver-type';
+import { DpaRegion } from './placeholders/dpa-region.enum';
+import { EmailDriver } from './placeholders/email-driver.enum';
+import { EmailingDomainDriver } from './placeholders/emailing-domain-driver.type';
+import { ExceptionHandlerDriver } from './placeholders/exception-handler-driver';
+import { StorageDriverType } from './placeholders/storage-driver-type';
+import { LoggerDriverType, type TwentyLogLevel } from './placeholders/logger-driver.type';
+import { MeterDriver } from './placeholders/meter-driver.type';
+import { CastToLogLevelArray } from './decorators/cast-to-log-level-array.decorator';
+import { CastToMeterDriverArray } from './decorators/cast-to-meter-driver.decorator';
+import { CastToPositiveNumber } from './decorators/cast-to-positive-number.decorator';
+import { CastToTypeORMLogLevelArray } from './decorators/cast-to-typeorm-log-level-array.decorator';
+import { CastToUpperSnakeCase } from './decorators/cast-to-upper-snake-case.decorator';
+import { ConfigVariablesMetadata } from './decorators/config-variables-metadata.decorator';
+import { IsAWSRegion } from './decorators/is-aws-region.decorator';
+import { IsDuration } from './decorators/is-duration.decorator';
+import { IsOptionalOrEmptyString } from './decorators/is-optional-or-empty-string.decorator';
+import { IsStrictlyLowerThan } from './decorators/is-strictly-lower-than.decorator';
+import { IsTwentySemVer } from './decorators/is-twenty-semver.decorator';
+import { ConfigVariableType } from './enums/config-variable-type.enum';
+import { ConfigVariablesGroup } from './enums/config-variables-group.enum';
 import {
   ConfigVariableException,
   ConfigVariableExceptionCode,
-} from 'src/engine/core-modules/twenty-config/twenty-config.exception';
-import { type AiProvidersConfig } from 'src/engine/metadata-modules/ai/ai-models/types/ai-providers-config.type';
+} from './twenty-config.exception';
+import { type AiProvidersConfig } from './placeholders/ai-providers-config.type';
 import {
   DEFAULT_DISABLED_MODELS,
   DEFAULT_FAST_MODELS,
   DEFAULT_RECOMMENDED_MODELS,
   DEFAULT_SMART_MODELS,
-} from 'src/engine/metadata-modules/ai/ai-models/utils/load-default-model-preferences.util';
+} from './placeholders/default-model-preferences';
 
 export class ConfigVariables {
   @ConfigVariablesMetadata({

@@ -1,13 +1,13 @@
 import { Injectable, Logger, type OnModuleInit } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 
-import { type DatabaseConfigDriverInterface } from 'src/engine/core-modules/twenty-config/drivers/interfaces/database-config-driver.interface';
+import { type DatabaseConfigDriverInterface } from './interfaces/database-config-driver.interface';
 
-import { ConfigCacheService } from 'src/engine/core-modules/twenty-config/cache/config-cache.service';
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { CONFIG_VARIABLES_REFRESH_CRON_INTERVAL } from 'src/engine/core-modules/twenty-config/constants/config-variables-refresh-cron-interval.constants';
-import { ConfigStorageService } from 'src/engine/core-modules/twenty-config/storage/config-storage.service';
-import { isEnvOnlyConfigVar } from 'src/engine/core-modules/twenty-config/utils/is-env-only-config-var.util';
+import { ConfigCacheService } from '../cache/config-cache.service';
+import { ConfigVariables } from '../config-variables';
+import { CONFIG_VARIABLES_REFRESH_CRON_INTERVAL } from '../constants/config-variables-refresh-cron-interval.constants';
+import { ConfigStorageService } from '../storage/config-storage.service';
+import { isEnvOnlyConfigVar } from '../utils/is-env-only-config-var.util';
 
 @Injectable()
 export class DatabaseConfigDriver

@@ -1,10 +1,10 @@
-import { type ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
+import { type ConfigVariableType } from '../enums/config-variable-type.enum';
 import {
   ConfigVariableException,
   ConfigVariableExceptionCode,
-} from 'src/engine/core-modules/twenty-config/twenty-config.exception';
-import { type ConfigVariableOptions } from 'src/engine/core-modules/twenty-config/types/config-variable-options.type';
-import { typeTransformers } from 'src/engine/core-modules/twenty-config/utils/type-transformers.registry';
+} from '../twenty-config.exception';
+import { type ConfigVariableOptions } from '../types/config-variable-options.type';
+import { typeTransformers } from './type-transformers.registry';
 
 export function applyBasicValidators(
   type: ConfigVariableType,

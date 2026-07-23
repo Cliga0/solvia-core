@@ -10,14 +10,14 @@ import {
   IsString,
 } from 'class-validator';
 
-import { ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
+import { ConfigVariableType } from '../enums/config-variable-type.enum';
 import {
   ConfigVariableException,
   ConfigVariableExceptionCode,
-} from 'src/engine/core-modules/twenty-config/twenty-config.exception';
-import { type ConfigVariableOptions } from 'src/engine/core-modules/twenty-config/types/config-variable-options.type';
-import { configTransformers } from 'src/engine/core-modules/twenty-config/utils/config-transformers.util';
-import { tryParseJsonArray } from 'src/utils/try-parse-json-array';
+} from '../twenty-config.exception';
+import { type ConfigVariableOptions } from '../types/config-variable-options.type';
+import { configTransformers } from './config-transformers.util';
+import { tryParseJsonArray } from '../placeholders/try-parse-json-array';
 
 export interface TypeTransformer<T> {
   toApp: (value: unknown, options?: ConfigVariableOptions) => T | undefined;

@@ -4,11 +4,11 @@ import {
   type ValidationOptions,
 } from 'class-validator';
 
-import { type ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
-import { type ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
-import { type ConfigVariableOptions } from 'src/engine/core-modules/twenty-config/types/config-variable-options.type';
-import { applyBasicValidators } from 'src/engine/core-modules/twenty-config/utils/apply-basic-validators.util';
-import { TypedReflect } from 'src/utils/typed-reflect';
+import { type ConfigVariableType } from '../enums/config-variable-type.enum';
+import { type ConfigVariablesGroup } from '../enums/config-variables-group.enum';
+import { type ConfigVariableOptions } from '../types/config-variable-options.type';
+import { applyBasicValidators } from '../utils/apply-basic-validators.util';
+import { TypedReflect } from '../placeholders/typed-reflect';
 
 export interface ConfigVariablesMetadataOptions {
   group: ConfigVariablesGroup;

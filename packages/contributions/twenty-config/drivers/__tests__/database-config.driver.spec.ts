@@ -1,13 +1,13 @@
 import { Test, type TestingModule } from '@nestjs/testing';
 
-import { ConfigCacheService } from 'src/engine/core-modules/twenty-config/cache/config-cache.service';
-import { type ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { DatabaseConfigDriver } from 'src/engine/core-modules/twenty-config/drivers/database-config.driver';
-import { ConfigStorageService } from 'src/engine/core-modules/twenty-config/storage/config-storage.service';
-import { isEnvOnlyConfigVar } from 'src/engine/core-modules/twenty-config/utils/is-env-only-config-var.util';
+import { ConfigCacheService } from '../../cache/config-cache.service';
+import { type ConfigVariables } from '../../config-variables';
+import { DatabaseConfigDriver } from '../database-config.driver';
+import { ConfigStorageService } from '../../storage/config-storage.service';
+import { isEnvOnlyConfigVar } from '../../utils/is-env-only-config-var.util';
 
 jest.mock(
-  'src/engine/core-modules/twenty-config/utils/is-env-only-config-var.util',
+  '../utils/is-env-only-config-var.util',
   () => ({
     isEnvOnlyConfigVar: jest.fn(),
   }),

@@ -1,16 +1,16 @@
 import { type LogLevel } from '@nestjs/common';
 import { Test, type TestingModule } from '@nestjs/testing';
 
-import { type ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { CONFIG_VARIABLES_INSTANCE_TOKEN } from 'src/engine/core-modules/twenty-config/constants/config-variables-instance-tokens.constants';
-import { ConfigValueConverterService } from 'src/engine/core-modules/twenty-config/conversion/config-value-converter.service';
-import { ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
-import { ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
-import * as typeTransformersModule from 'src/engine/core-modules/twenty-config/utils/type-transformers.registry';
-import { TypedReflect } from 'src/utils/typed-reflect';
+import { type ConfigVariables } from '../../config-variables';
+import { CONFIG_VARIABLES_INSTANCE_TOKEN } from '../../constants/config-variables-instance-tokens.constants';
+import { ConfigValueConverterService } from '../config-value-converter.service';
+import { ConfigVariableType } from '../../enums/config-variable-type.enum';
+import { ConfigVariablesGroup } from '../../enums/config-variables-group.enum';
+import * as typeTransformersModule from '../../utils/type-transformers.registry';
+import { TypedReflect } from '../../placeholders/typed-reflect';
 
 jest.mock(
-  'src/engine/core-modules/twenty-config/utils/type-transformers.registry',
+  '../utils/type-transformers.registry',
   () => {
     const createMockTransformer = () => ({
       toApp: jest.fn().mockImplementation((value) => value),

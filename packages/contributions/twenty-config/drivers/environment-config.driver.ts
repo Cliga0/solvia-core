@@ -1,8 +1,8 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { CONFIG_VARIABLES_INSTANCE_TOKEN } from 'src/engine/core-modules/twenty-config/constants/config-variables-instance-tokens.constants';
+import { ConfigVariables } from '../config-variables';
+import { CONFIG_VARIABLES_INSTANCE_TOKEN } from '../constants/config-variables-instance-tokens.constants';
 
 @Injectable()
 export class EnvironmentConfigDriver {

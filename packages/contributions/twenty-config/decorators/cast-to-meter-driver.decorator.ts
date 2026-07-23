@@ -1,7 +1,7 @@
 import { isNonEmptyString } from '@sniptt/guards';
 import { Transform } from 'class-transformer';
 
-import { MeterDriver } from 'src/engine/core-modules/metrics/types/meter-driver.type';
+import { MeterDriver } from '../placeholders/meter-driver.type';
 
 export const CastToMeterDriverArray = () =>
   Transform(({ value }: { value: string }) => toMeterDriverArray(value));

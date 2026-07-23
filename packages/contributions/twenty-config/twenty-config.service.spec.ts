@@ -1,17 +1,17 @@
 import { ConfigService } from '@nestjs/config';
 import { Test, type TestingModule } from '@nestjs/testing';
 
-import { type ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { CONFIG_VARIABLES_INSTANCE_TOKEN } from 'src/engine/core-modules/twenty-config/constants/config-variables-instance-tokens.constants';
-import { DatabaseConfigDriver } from 'src/engine/core-modules/twenty-config/drivers/database-config.driver';
-import { EnvironmentConfigDriver } from 'src/engine/core-modules/twenty-config/drivers/environment-config.driver';
-import { ConfigSource } from 'src/engine/core-modules/twenty-config/enums/config-source.enum';
-import { ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
-import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
-import { isEnvOnlyConfigVar } from 'src/engine/core-modules/twenty-config/utils/is-env-only-config-var.util';
-import { TypedReflect } from 'src/utils/typed-reflect';
+import { type ConfigVariables } from './config-variables';
+import { CONFIG_VARIABLES_INSTANCE_TOKEN } from './constants/config-variables-instance-tokens.constants';
+import { DatabaseConfigDriver } from './drivers/database-config.driver';
+import { EnvironmentConfigDriver } from './drivers/environment-config.driver';
+import { ConfigSource } from './enums/config-source.enum';
+import { ConfigVariablesGroup } from './enums/config-variables-group.enum';
+import { TwentyConfigService } from './twenty-config.service';
+import { isEnvOnlyConfigVar } from './utils/is-env-only-config-var.util';
+import { TypedReflect } from './placeholders/typed-reflect';
 
-jest.mock('src/utils/typed-reflect', () => ({
+jest.mock('./placeholders/typed-reflect', () => ({
   TypedReflect: {
     getMetadata: jest.fn(),
     defineMetadata: jest.fn(),
@@ -19,7 +19,7 @@ jest.mock('src/utils/typed-reflect', () => ({
 }));
 
 jest.mock(
-  'src/engine/core-modules/twenty-config/constants/config-variables-masking-config',
+  '../constants/config-variables-masking-config',
   () => ({
     CONFIG_VARIABLES_MASKING_CONFIG: {
       SENSITIVE_VAR: {
@@ -31,7 +31,7 @@ jest.mock(
 );
 
 jest.mock(
-  'src/engine/core-modules/twenty-config/utils/is-env-only-config-var.util',
+  '../utils/is-env-only-config-var.util',
   () => ({
     isEnvOnlyConfigVar: jest.fn(),
   }),

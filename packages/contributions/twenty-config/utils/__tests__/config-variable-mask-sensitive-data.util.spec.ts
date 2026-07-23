@@ -1,5 +1,5 @@
-import { ConfigVariablesMaskingStrategies } from 'src/engine/core-modules/twenty-config/enums/config-variables-masking-strategies.enum';
-import { configVariableMaskSensitiveData } from 'src/engine/core-modules/twenty-config/utils/config-variable-mask-sensitive-data.util';
+import { ConfigVariablesMaskingStrategies } from '../../enums/config-variables-masking-strategies.enum';
+import { configVariableMaskSensitiveData } from '../config-variable-mask-sensitive-data.util';
 
 describe('configVariableMaskSensitiveData', () => {
   describe('LAST_N_CHARS strategy', () => {

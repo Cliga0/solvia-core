@@ -1,4 +1,4 @@
-import { ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
+import { ConfigVariablesGroup } from '../enums/config-variables-group.enum';
 
 type GroupMetadata = {
   position: number;

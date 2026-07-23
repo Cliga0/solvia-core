@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 
 import { createHash } from 'crypto';
 
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { type ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
-import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
-import { TypedReflect } from 'src/utils/typed-reflect';
+import { ConfigVariables } from '../config-variables';
+import { type ConfigVariablesGroup } from '../enums/config-variables-group.enum';
+import { TwentyConfigService } from '../twenty-config.service';
+import { TypedReflect } from '../placeholders/typed-reflect';
 
 @Injectable()
 export class ConfigGroupHashService {
@@ -31,7 +31,7 @@ export class ConfigGroupHashService {
     group: ConfigVariablesGroup,
   ): Array<keyof ConfigVariables> {
     const metadata =
-      TypedReflect.getMetadata('config-variables', ConfigVariables) ?? {};
+      TypedReflect.getMetadata<Record<string, any>> ('config-variables', ConfigVariables) ?? {};
 
     return Object.keys(metadata)
       .filter((key) => metadata[key]?.group === group)

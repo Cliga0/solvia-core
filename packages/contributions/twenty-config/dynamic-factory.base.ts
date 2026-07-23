@@ -1,5 +1,5 @@
-import { type ConfigGroupHashService } from 'src/engine/core-modules/twenty-config/services/config-group-hash.service';
-import { type TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
+import { type ConfigGroupHashService } from './services/config-group-hash.service';
+import { type TwentyConfigService } from './twenty-config.service';
 
 export abstract class DriverFactoryBase<TDriver> {
   private currentDriver: TDriver | null = null;

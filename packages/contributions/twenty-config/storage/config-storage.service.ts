@@ -6,18 +6,17 @@ import { type FindOptionsWhere, IsNull, Repository } from 'typeorm';
 import {
   KeyValuePairEntity,
   KeyValuePairType,
-} from 'src/engine/core-modules/key-value-pair/key-value-pair.entity';
-import { isEncryptedString } from 'src/engine/core-modules/secret-encryption/branded-strings/is-encrypted-string.util';
-import { type PlaintextString } from 'src/engine/core-modules/secret-encryption/branded-strings/plaintext-string.type';
-import { SecretEncryptionService } from 'src/engine/core-modules/secret-encryption/secret-encryption.service';
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { ConfigValueConverterService } from 'src/engine/core-modules/twenty-config/conversion/config-value-converter.service';
-import { ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
+} from '../placeholders/key-value-pair.entity';
+import { isEncryptedString, type PlaintextString } from '../placeholders/secret-encryption';
+import { SecretEncryptionService } from '../placeholders/secret-encryption.service';
+import { ConfigVariables } from '../config-variables';
+import { ConfigValueConverterService } from '../conversion/config-value-converter.service';
+import { ConfigVariableType } from '../enums/config-variable-type.enum';
 import {
   ConfigVariableException,
   ConfigVariableExceptionCode,
-} from 'src/engine/core-modules/twenty-config/twenty-config.exception';
-import { TypedReflect } from 'src/utils/typed-reflect';
+} from '../twenty-config.exception';
+import { TypedReflect } from '../placeholders/typed-reflect';
 
 import { type ConfigStorageInterface } from './interfaces/config-storage.interface';
 
@@ -44,7 +43,7 @@ export class ConfigStorageService implements ConfigStorageInterface {
   }
 
   private getConfigMetadata<T extends keyof ConfigVariables>(key: T) {
-    return TypedReflect.getMetadata('config-variables', ConfigVariables)?.[
+    return TypedReflect.getMetadata<Record<string, any>> ('config-variables', ConfigVariables)?.[
       key as string
     ];
   }
@@ -84,7 +83,7 @@ export class ConfigStorageService implements ConfigStorageInterface {
       return convertedValue;
     } catch (error) {
       throw new ConfigVariableException(
-        `Failed to convert value for key ${key as string}: ${error.message}`,
+        `Failed to convert value for key ${key as string}: ${(error as Error).message}`,
         ConfigVariableExceptionCode.VALIDATION_FAILED,
       );
     }
@@ -109,7 +108,7 @@ export class ConfigStorageService implements ConfigStorageInterface {
       return convertedValue as KeyValuePairEntity['value'];
     } catch (error) {
       throw new ConfigVariableException(
-        `Failed to convert value for key ${key as string}: ${error.message}`,
+        `Failed to convert value for key ${key as string}: ${(error as Error).message}`,
         ConfigVariableExceptionCode.VALIDATION_FAILED,
       );
     }

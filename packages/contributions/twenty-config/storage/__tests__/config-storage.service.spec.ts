@@ -6,25 +6,26 @@ import { type DeleteResult, IsNull, type Repository } from 'typeorm';
 import {
   KeyValuePairEntity,
   KeyValuePairType,
-} from 'src/engine/core-modules/key-value-pair/key-value-pair.entity';
-import { SecretEncryptionService } from 'src/engine/core-modules/secret-encryption/secret-encryption.service';
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { ConfigValueConverterService } from 'src/engine/core-modules/twenty-config/conversion/config-value-converter.service';
-import { EnvironmentConfigDriver } from 'src/engine/core-modules/twenty-config/drivers/environment-config.driver';
-import { ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
-import { ConfigVariablesGroup } from 'src/engine/core-modules/twenty-config/enums/config-variables-group.enum';
-import { ConfigStorageService } from 'src/engine/core-modules/twenty-config/storage/config-storage.service';
+} from '../../placeholders/key-value-pair.entity';
+import { SecretEncryptionService } from '../../placeholders/secret-encryption.service';
+import { ConfigVariables } from '../../config-variables';
+import { ConfigValueConverterService } from '../../conversion/config-value-converter.service';
+import { EnvironmentConfigDriver } from '../../drivers/environment-config.driver';
+import { ConfigVariableType } from '../../enums/config-variable-type.enum';
+import { ConfigVariablesGroup } from '../../enums/config-variables-group.enum';
+import { ConfigStorageService } from '../config-storage.service';
 import {
   ConfigVariableException,
   ConfigVariableExceptionCode,
-} from 'src/engine/core-modules/twenty-config/twenty-config.exception';
-import { type UserEntity } from 'src/engine/core-modules/user/user.entity';
-import { type WorkspaceEntity } from 'src/engine/core-modules/workspace/workspace.entity';
-import { TypedReflect } from 'src/utils/typed-reflect';
+} from '../../twenty-config.exception';
+import { type UserEntity, type WorkspaceEntity } from '../../placeholders/user-workspace.entity';
+import { TypedReflect } from '../../placeholders/typed-reflect';
 
-jest.mock('src/engine/core-modules/auth/auth.util', () => ({
-  encryptText: jest.fn((text) => `${text}`),
-  decryptText: jest.fn((text) => `${text}`),
+jest.mock('../../placeholders/typed-reflect', () => ({
+  TypedReflect: {
+    getMetadata: jest.fn(),
+    defineMetadata: jest.fn(),
+  },
 }));
 
 describe('ConfigStorageService', () => {
@@ -39,7 +40,7 @@ describe('ConfigStorageService', () => {
   ): KeyValuePairEntity => ({
     id: '1',
     key,
-    value: value as unknown as JSON,
+    value: value as unknown as string,
     type: KeyValuePairType.CONFIG_VARIABLE,
     userId: null,
     workspaceId: null,
@@ -506,7 +507,7 @@ describe('ConfigStorageService', () => {
         const configVars: KeyValuePairEntity[] = [
           {
             ...createMockKeyValuePair('AUTH_PASSWORD_ENABLED', 'true'),
-            value: null as unknown as JSON,
+            value: null as unknown as string,
           },
           createMockKeyValuePair('EMAIL_FROM_ADDRESS', 'test@example.com'),
         ];

@@ -1,11 +1,11 @@
 import { type DynamicModule, Global, Module } from '@nestjs/common';
 
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { CONFIG_VARIABLES_INSTANCE_TOKEN } from 'src/engine/core-modules/twenty-config/constants/config-variables-instance-tokens.constants';
-import { DatabaseConfigModule } from 'src/engine/core-modules/twenty-config/drivers/database-config.module';
-import { ConfigGroupHashService } from 'src/engine/core-modules/twenty-config/services/config-group-hash.service';
-import { ConfigurableModuleClass } from 'src/engine/core-modules/twenty-config/twenty-config.module-definition';
-import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twenty-config.service';
+import { ConfigVariables } from './config-variables';
+import { CONFIG_VARIABLES_INSTANCE_TOKEN } from './constants/config-variables-instance-tokens.constants';
+import { DatabaseConfigModule } from './drivers/database-config.module';
+import { ConfigGroupHashService } from './services/config-group-hash.service';
+import { ConfigurableModuleClass } from './twenty-config.module-definition';
+import { TwentyConfigService } from './twenty-config.service';
 
 @Global()
 @Module({})

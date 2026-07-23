@@ -1,10 +1,12 @@
-import { registerEnumType } from '@nestjs/graphql';
+// TODO: Re-enable GraphQL enum registration when Solvia adds GraphQL support.
+// import { registerEnumType } from '@nestjs/graphql';
 
 export enum SupportDriver {
   NONE = 'NONE',
   FRONT = 'FRONT',
 }
 
-registerEnumType(SupportDriver, {
-  name: 'SupportDriver',
-});
+// TODO: Re-enable when GraphQL is available.
+// registerEnumType(SupportDriver, {
+//   name: 'SupportDriver',
+// });

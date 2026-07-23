@@ -1,15 +1,15 @@
 import { Inject, Injectable } from '@nestjs/common';
 
-import { ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
-import { CONFIG_VARIABLES_INSTANCE_TOKEN } from 'src/engine/core-modules/twenty-config/constants/config-variables-instance-tokens.constants';
-import { type ConfigVariablesMetadataMap } from 'src/engine/core-modules/twenty-config/decorators/config-variables-metadata.decorator';
-import { ConfigVariableType } from 'src/engine/core-modules/twenty-config/enums/config-variable-type.enum';
+import { ConfigVariables } from '../config-variables';
+import { CONFIG_VARIABLES_INSTANCE_TOKEN } from '../constants/config-variables-instance-tokens.constants';
+import { type ConfigVariablesMetadataMap } from '../decorators/config-variables-metadata.decorator';
+import { ConfigVariableType } from '../enums/config-variable-type.enum';
 import {
   ConfigVariableException,
   ConfigVariableExceptionCode,
-} from 'src/engine/core-modules/twenty-config/twenty-config.exception';
-import { typeTransformers } from 'src/engine/core-modules/twenty-config/utils/type-transformers.registry';
-import { TypedReflect } from 'src/utils/typed-reflect';
+} from '../twenty-config.exception';
+import { typeTransformers } from '../utils/type-transformers.registry';
+import { TypedReflect } from '../placeholders/typed-reflect';
 
 @Injectable()
 export class ConfigValueConverterService {

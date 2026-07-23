@@ -1,8 +1,8 @@
-import { type MessageDescriptor } from '@lingui/core';
-import { msg } from '@lingui/core/macro';
-import { assertUnreachable } from 'twenty-shared/utils';
+import { type MessageDescriptor } from './placeholders/lingui-core';
+import { msg } from './placeholders/lingui-msg';
 
-import { CustomException } from 'src/utils/custom-exception';
+import { assertUnreachable } from './placeholders/twenty-shared-utils';
+import { CustomException } from './placeholders/custom-exception';
 
 export enum ConfigVariableExceptionCode {
   DATABASE_CONFIG_DISABLED = 'DATABASE_CONFIG_DISABLED',

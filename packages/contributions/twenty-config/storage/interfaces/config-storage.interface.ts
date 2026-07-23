@@ -1,4 +1,4 @@
-import { type ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
+import { type ConfigVariables } from '../../config-variables';
 
 export interface ConfigStorageInterface {
   get<T extends keyof ConfigVariables>(

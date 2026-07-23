@@ -1,7 +1,7 @@
 import { Test, type TestingModule } from '@nestjs/testing';
 
-import { ConfigCacheService } from 'src/engine/core-modules/twenty-config/cache/config-cache.service';
-import { type ConfigVariables } from 'src/engine/core-modules/twenty-config/config-variables';
+import { ConfigCacheService } from '../config-cache.service';
+import { type ConfigVariables } from '../../config-variables';
 
 describe('ConfigCacheService', () => {
   let service: ConfigCacheService;
